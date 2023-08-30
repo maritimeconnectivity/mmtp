@@ -52,11 +52,17 @@ message ProtocolMessage {
 }
 
 message Subscribe {
-  string subject = 1;
+  oneof subjectOrDirectMessages {
+    string subject = 1;
+    bool directMessages = 2;
+  }
 }
 
 message Unsubscribe {
-  string subject = 1;
+  oneof subjectOrDirectMessages {
+    string subject = 1;
+    bool directMessages = 2;
+  }
 }
 
 message Send {
@@ -114,3 +120,4 @@ message MessageMetadata {
   string uuid = 1;
   ApplicationMessageHeader header = 2;
 }
+
