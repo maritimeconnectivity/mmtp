@@ -5,7 +5,7 @@ option go_package = "generated/mmtp";
 message ApplicationMessage {
   ApplicationMessageHeader header = 1;
   bytes body = 2;
-  string signature = 3;
+  bytes signature = 3;
 }
 
 message ApplicationMessageHeader {
@@ -48,6 +48,7 @@ message ProtocolMessage {
     Fetch fetchMessage = 6;
     Disconnect disconnectMessage = 7;
     Connect connectMessage = 8;
+    Notify notifyMessage = 9;
   }
 }
 
@@ -90,6 +91,10 @@ message Connect {
   optional string reconnectToken = 2;
 }
 
+message Notify {
+  repeated MessageMetadata messageMetadata = 1;
+}
+
 enum ProtocolMessageType {
   UNSPECIFIED = 0;
   SUBSCRIBE_MESSAGE = 1;
@@ -99,6 +104,7 @@ enum ProtocolMessageType {
   FETCH_MESSAGE = 5;
   DISCONNECT_MESSAGE = 6;
   CONNECT_MESSAGE = 7;
+  NOTIFY_MESSAGE = 8;
 }
 
 message ResponseMessage {
@@ -120,4 +126,3 @@ message MessageMetadata {
   string uuid = 1;
   ApplicationMessageHeader header = 2;
 }
-
