@@ -9,3 +9,8 @@ To compile language bindings for golang to a folder `go` execute the following c
 ```
 protoc -I=. --go_out=go mmtp.proto
 ```
+
+
+## Log of revision
+* 3/4-2025: Updated definition according to specification changes. A response message now holds a `repeated MessageContent messageContent = 5;` such that the UUID of the original message is not lost.
+
