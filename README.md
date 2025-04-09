@@ -15,4 +15,11 @@ protoc -I=. --go_out=go mmtp.proto
 * 3/4-2025: Updated definition according to specification changes. A response message now holds a `repeated MessageContent messageContent = 5;` such that the UUID of the original message is not lost.
 
 ### Notes
-* For compiling the typescript bindings we recommend [proto-ts](https://github.com/stephenh/ts-proto)
+* For compiling the typescript bindings we recommend [proto-ts](https://github.com/stephenh/ts-proto) using the following command upon installation
+```
+protoc \
+  --plugin=protoc-gen-ts=../node_modules/.bin/protoc-gen-ts_proto \
+  --ts_out=./ts/ \
+  mmtp.proto -I=.
+
+```
